@@ -3,22 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function register(Request $request): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+    public function register(Request $request): Response
     {
         $data = $request->validate([
             "name" => "required|string|unique:users",
             "email" => "required|string|email|unique:users",
             "password" => "required|string|min:8"
         ]);
-
-        if (empty($data)) {
-            return response("Empty");
-        }
 
         $user = new User([
             "name" => $data["name"],
@@ -31,13 +30,20 @@ class AuthController extends Controller
         return response(status: 201);
     }
 
-    public function login()
+    public function login(Request $request): JsonResponse
     {
+        $credentials = $request->validate([
+            "name" => "required|string",
+            "password" => "required|string"
+        ]);
 
-    }
+        if (Auth::attempt($credentials))
+        {
+            return response()->json($request->user()->createToken('token')->plainTextToken);
+        }
 
-    public function logout()
-    {
-
+        return response()->json([
+            "msg" => "Invalid username or password"
+        ]);
     }
 }
