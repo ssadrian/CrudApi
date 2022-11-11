@@ -21,6 +21,7 @@ class ProductController extends Controller
     public function get(Request $request): JsonResponse
     {
         $data = $request->validate([
+            "id" => "nullable|int",
             "name" => "nullable|string",
             "price" => "nullable|int",
             "description" => "nullable|string"
@@ -28,20 +29,20 @@ class ProductController extends Controller
 
         $products = $this->getAll();
 
+        if (isset($data["id"])) {
+            $products = $products->where("id", $data["id"]);
+        }
+
         if (isset($data["name"])) {
-            $products->where("name", $data["name"]);
+            $products = $products->where("name", $data["name"]);
         }
 
         if (isset($data["price"])) {
-            $products->where("price", $data["price"]);
+            $products = $products->where("price", $data["price"]);
         }
 
         if (isset($data["description"])) {
-            $products->where("description", $data["description"]);
-        }
-
-        foreach ($products as $product) {
-            $product->categories = $product->getCategories();
+            $products = $products->where("description", $data["description"]);
         }
 
         return response()->json(
@@ -82,7 +83,7 @@ class ProductController extends Controller
             "description" => "nullable|string"
         ]);
 
-        $product = Product::find($data["id"]);
+        $product = Product::find($data["price"]);
 
         if (!$product) {
             // Gone
