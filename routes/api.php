@@ -35,7 +35,8 @@ Route::group(["middleware" => "auth:sanctum"], function () {
     Route::put("category", [CategoryController::class, "put"]);
     Route::delete("category", [CategoryController::class, "delete"]);
 
-    Route::post("product/assignCategory", [ProductController::class, "assignCategory"]);
+    Route::post("product/assign_category", [ProductController::class, "assignCategory"]);
+    Route::post("product/unassign_category", [ProductController::class, "unAssignCategory"]);
 
     Route::get("user", fn(Request $request) => $request->user());
 });
