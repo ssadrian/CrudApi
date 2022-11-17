@@ -184,12 +184,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{API_URL}}/{{AllCategoryEndpoint}}",
+									"raw": "{{API_URL}}/{{AllCategoriesEndpoint}}",
 									"host": [
 										"{{API_URL}}"
 									],
 									"path": [
-										"{{AllCategoryEndpoint}}"
+										"{{AllCategoriesEndpoint}}"
 									]
 								},
 								"description": "Get all categories from the DB."
@@ -581,7 +581,7 @@
 			"value": "product"
 		},
 		{
-			"key": "AllCategoryEndpoint",
+			"key": "AllCategoriesEndpoint",
 			"value": "categories"
 		},
 		{
