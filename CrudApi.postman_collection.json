@@ -1,0 +1,592 @@
+{
+	"info": {
+		"_postman_id": "4b4fdc09-1a48-4b9e-92ef-4e399be1a745",
+		"name": "CrudApi",
+		"description": "This collection contains all the blackbox tests for the [CrudApi](https://github.com/ssadrian/CrudApi).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authorized",
+			"item": [
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "All",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/{{AllProductsEndpoint}}",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"{{AllProductsEndpoint}}"
+									]
+								},
+								"description": "Get all products from the DB."
+							},
+							"response": []
+						},
+						{
+							"name": "Filtered",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/{{ProductEndpoint}}",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"{{ProductEndpoint}}"
+									]
+								},
+								"description": "Get all products, filtered by these fields."
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Test\",\r\n    \"stock\": 2,\r\n    \"price\": 1.5,\r\n    \"description\": \"Test item\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/{{ProductEndpoint}}",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"{{ProductEndpoint}}"
+									]
+								},
+								"description": "Create a product in the DB."
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Teeest\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/{{ProductEndpoint}}",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"{{ProductEndpoint}}"
+									]
+								},
+								"description": "Update a product that matches *id* with the specified fields.\n\n**The id of the product cannot be changed.**"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/{{ProductEndpoint}}",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"{{ProductEndpoint}}"
+									]
+								},
+								"description": "Delete a product by it's *id*.\nIf no product was found then nothing will be destroyed."
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/{{AllCategoryEndpoint}}",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"{{AllCategoryEndpoint}}"
+									]
+								},
+								"description": "Get all categories from the DB."
+							},
+							"response": []
+						},
+						{
+							"name": "Filtered",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Test\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/{{CategoryEndpoint}}",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"{{CategoryEndpoint}}"
+									]
+								},
+								"description": "Get all categories, filtered by the specified fields."
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Test Category\",\r\n    \"description\": \"Description\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/{{CategoryEndpoint}}",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"{{CategoryEndpoint}}"
+									]
+								},
+								"description": "Create a category in the DB."
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"new category\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/{{CategoryEndpoint}}",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"{{CategoryEndpoint}}"
+									]
+								},
+								"description": "Update a category that matches *id* with the specified fields.\n\n**The id of the category cannot be changed.**"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/{{CategoryEndpoint}}",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"{{CategoryEndpoint}}"
+									]
+								},
+								"description": "Delete a category by it's *id*.\nIf no category was found then nothing will be destroyed."
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "UnAssign Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product\": 1,\r\n    \"category\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/{{ProductEndpoint}}//unassignCategory",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"{{ProductEndpoint}}",
+								"",
+								"unassignCategory"
+							]
+						},
+						"description": "Unassign a category from a product.\nThe same code gets executed when unassigning a product from a category."
+					},
+					"response": []
+				},
+				{
+					"name": "UnAssign Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product\": 1,\r\n    \"category\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/{{CategoryEndpoint}}//unassignProduct",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"{{CategoryEndpoint}}",
+								"",
+								"unassignProduct"
+							]
+						},
+						"description": "Unassign a product from a category.\nThe same code gets executed when unassigning a category from a product."
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product\": 1,\r\n    \"category\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/{{ProductEndpoint}}/assignCategory",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"{{ProductEndpoint}}",
+								"assignCategory"
+							]
+						},
+						"description": "Assign a category to a product.\nThe same code gets executed when assigning a product to a category."
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product\": 1,\r\n    \"category\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/{{CategoryEndpoint}}/assignProduct",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"{{CategoryEndpoint}}",
+								"assignProduct"
+							]
+						},
+						"description": "Assign a product to a category.\nThe same code gets executed when assigning a category to a product."
+					},
+					"response": []
+				}
+			],
+			"description": "All requests under this collection must be authenticated otherwise the api won't respond with data.",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{Api Token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"TestUser\",\r\n    \"password\": \"p@ssw0rd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_URL}}/login",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"login"
+					]
+				},
+				"description": "A user an login only with their name and password."
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"TestUser\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"p@ssw0rd\",\r\n    \"password_confirmation\": \"p@ssw0rd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_URL}}/register",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"register"
+					]
+				},
+				"description": "All the fields from body are required.\nThe user/name and email must be unique and the password must be confirmed."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_URL",
+			"value": "http://localhost:8000/api",
+			"type": "default"
+		},
+		{
+			"key": "Api Token",
+			"value": "LaBdSOJPbMKA5dg0GKMQSbiw0w7QWhVk9u4j8suM"
+		},
+		{
+			"key": "AllProductsEndpoint",
+			"value": "products"
+		},
+		{
+			"key": "ProductEndpoint",
+			"value": "product"
+		},
+		{
+			"key": "AllCategoryEndpoint",
+			"value": "categories"
+		},
+		{
+			"key": "CategoryEndpoint",
+			"value": "category"
+		}
+	]
+}
