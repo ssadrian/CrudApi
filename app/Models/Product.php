@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
-    use HasFactory, Searchable;
+    use HasFactory;
 
     /**
      * The table associated with the model.
@@ -25,6 +24,7 @@ class Product extends Model
      */
     protected $fillable = [
         "name",
+        "stock",
         "price",
         "description",
         "categories"

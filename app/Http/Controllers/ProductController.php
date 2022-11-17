@@ -22,8 +22,9 @@ class ProductController extends Controller
     {
         $data = $request->validate([
             "id" => "nullable|int",
+            "stock" => "nullable|int",
             "name" => "nullable|string",
-            "price" => "nullable|int",
+            "price" => "nullable|numeric",
             "description" => "nullable|string"
         ]);
 
@@ -31,6 +32,10 @@ class ProductController extends Controller
 
         if (isset($data["id"])) {
             $products = $products->where("id", $data["id"]);
+        }
+
+        if (isset($data["stock"])) {
+            $products = $products->where("stock", $data["stock"]);
         }
 
         if (isset($data["name"])) {
@@ -54,12 +59,14 @@ class ProductController extends Controller
     {
         $data = $request->validate([
             "name" => "required|string",
+            "stock" => "required|int",
             "price" => "required|numeric",
             "description" => "required|string"
         ]);
 
         $newProduct = Product::create([
             "name" => $data["name"],
+            "stock" => $data["stock"],
             "price" => $data["price"],
             "description" => $data["description"]
         ]);
@@ -79,7 +86,8 @@ class ProductController extends Controller
         $data = $request->validate([
             "id" => "required|int",
             "name" => "nullable|string",
-            "price" => "nullable|int",
+            "stock" => "nullable|int",
+            "price" => "nullable|numeric",
             "description" => "nullable|string"
         ]);
 
@@ -92,6 +100,10 @@ class ProductController extends Controller
 
         if (isset($data["name"])) {
             $product->name = $data["name"];
+        }
+
+        if (isset($data["stock"])) {
+            $product->name = $data["stock"];
         }
 
         if (isset($data["price"])) {

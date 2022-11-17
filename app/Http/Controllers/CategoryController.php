@@ -38,11 +38,13 @@ class CategoryController extends Controller
     public function post(Request $request): Response|Application|ResponseFactory
     {
         $data = $request->validate([
-            "name" => "required|string"
+            "name" => "required|string",
+            "description" => "required|string"
         ]);
 
         $newCategory = Category::create([
-            "name" => $data["name"]
+            "name" => $data["name"],
+            "description" => $data["description"]
         ]);
 
         // Category exists -> was created
@@ -59,7 +61,8 @@ class CategoryController extends Controller
     {
         $data = $request->validate([
             "id" => "required|int",
-            "name" => "nullable|string"
+            "name" => "nullable|string",
+            "description" => "nullable|string"
         ]);
 
         $category = Category::findOrFail($data["id"]);
@@ -76,10 +79,10 @@ class CategoryController extends Controller
     public function delete(Request $request): Response|Application|ResponseFactory
     {
         $data = $request->validate([
-            'id' => 'required|int'
+            "id" => "required|int"
         ]);
 
-        $deleted = Category::destroy($data['id']) !== 0;
+        $deleted = Category::destroy($data["id"]) !== 0;
 
         if ($deleted) {
             // Ok
