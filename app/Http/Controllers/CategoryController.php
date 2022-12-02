@@ -15,7 +15,7 @@ class CategoryController extends Controller
 {
     public function getAll(): Collection
     {
-        return Category::with("relatedProducts")->get();
+        return Category::with("products")->get();
     }
 
     public function get(Request $request): JsonResponse

@@ -19,7 +19,7 @@
 - Configure an *.env* file, check the example [.env](./.env.example)
 
 ```sh
-composer start
+composer new-serve
 ```
 
 </details>

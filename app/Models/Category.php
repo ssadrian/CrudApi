@@ -30,7 +30,7 @@ class Category extends Model
         "pivot"
     ];
 
-    public function relatedProducts(): BelongsToMany
+    public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class);
     }

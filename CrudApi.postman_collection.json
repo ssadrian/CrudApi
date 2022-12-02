@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4b4fdc09-1a48-4b9e-92ef-4e399be1a745",
+		"_postman_id": "eaeccfb6-d8ec-492c-9ece-7e53f83d50cd",
 		"name": "CrudApi",
 		"description": "This collection contains all the blackbox tests for the [CrudApi](https://github.com/ssadrian/CrudApi).",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -344,14 +344,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{API_URL}}/{{ProductEndpoint}}//unassignCategory",
+							"raw": "{{API_URL}}/{{ProductEndpoint}}/unassign_category",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
 								"{{ProductEndpoint}}",
-								"",
-								"unassignCategory"
+								"unassign_category"
 							]
 						},
 						"description": "Unassign a category from a product.\nThe same code gets executed when unassigning a product from a category."
@@ -373,14 +372,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{API_URL}}/{{CategoryEndpoint}}//unassignProduct",
+							"raw": "{{API_URL}}/{{CategoryEndpoint}}/unassign_product",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
 								"{{CategoryEndpoint}}",
-								"",
-								"unassignProduct"
+								"unassign_product"
 							]
 						},
 						"description": "Unassign a product from a category.\nThe same code gets executed when unassigning a category from a product."
@@ -391,7 +389,13 @@
 					"name": "Assign Category",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"product\": 1,\r\n    \"category\": 1\r\n}",
@@ -402,16 +406,16 @@
 							}
 						},
 						"url": {
-							"raw": "{{API_URL}}/{{ProductEndpoint}}/assignCategory",
+							"raw": "{{API_URL}}/{{ProductEndpoint}}/assign_category",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
 								"{{ProductEndpoint}}",
-								"assignCategory"
+								"assign_category"
 							]
 						},
-						"description": "Assign a category to a product.\nThe same code gets executed when assigning a product to a category."
+						"description": "Assign a category from a product.\nThe same code gets executed when assigning a product from a category."
 					},
 					"response": []
 				},
@@ -430,16 +434,16 @@
 							}
 						},
 						"url": {
-							"raw": "{{API_URL}}/{{CategoryEndpoint}}/assignProduct",
+							"raw": "{{API_URL}}/{{ProductEndpoint}}/assign_product",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
-								"{{CategoryEndpoint}}",
-								"assignProduct"
+								"{{ProductEndpoint}}",
+								"assign_product"
 							]
 						},
-						"description": "Assign a product to a category.\nThe same code gets executed when assigning a category to a product."
+						"description": "Assign a category from a product.\nThe same code gets executed when assigning a product from a category."
 					},
 					"response": []
 				}
@@ -570,7 +574,7 @@
 		},
 		{
 			"key": "Api Token",
-			"value": "LaBdSOJPbMKA5dg0GKMQSbiw0w7QWhVk9u4j8suM"
+			"value": "3ZOjdBi7oCMgO0bAKS096eCguKUMkzhYiaJbKcm8"
 		},
 		{
 			"key": "AllProductsEndpoint",
